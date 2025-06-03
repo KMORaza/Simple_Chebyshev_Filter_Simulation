@@ -1,6 +1,6 @@
 .root {
     -fx-font-family: "Verdana";
-    -fx-background-color: #d3d3d3; /* Light gray background */
+    -fx-background-color: #d3d3d3; 
 }
 
 .pane {
