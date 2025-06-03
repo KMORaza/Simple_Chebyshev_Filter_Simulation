@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="simulation.software.codebase.FilterController" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <TabPane fx:id="mainTabPane" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="30">
+        <Tab text="Filter Settings" closable="false">
+            <VBox spacing="10" styleClass="pane">
+                <GridPane hgap="5" vgap="5" alignment="CENTER">
+                    <Label text="Filter Type:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label"/>
+                    <ComboBox fx:id="filterType" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Design Type:" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="label"/>
+                    <ComboBox fx:id="designType" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                    <Label text="Design Method:" GridPane.rowIndex="0" GridPane.columnIndex="4" styleClass="label"/>
+                    <ComboBox fx:id="designMethod" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="5"/>
+
+                    <Label text="Order:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="label"/>
+                    <TextField fx:id="orderField" prefWidth="80" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <CheckBox fx:id="autoOrderCheck" text="Auto" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <Slider fx:id="orderSlider" min="1" max="20" prefWidth="150" GridPane.rowIndex="1" GridPane.columnIndex="3" GridPane.columnSpan="3"/>
+
+                    <Label text="Passband Ripple (dB):" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="label"/>
+                    <TextField fx:id="passbandRippleField" prefWidth="80" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Slider fx:id="passbandRippleSlider" min="0.1" max="10" prefWidth="150" GridPane.rowIndex="2" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
+                    <Label text="Stopband Atten. (dB):" GridPane.rowIndex="2" GridPane.columnIndex="4" styleClass="label"/>
+                    <TextField fx:id="stopbandAttenuationField" prefWidth="80" GridPane.rowIndex="2" GridPane.columnIndex="5"/>
+                    <Slider fx:id="stopbandAttenuationSlider" min="10" max="100" prefWidth="150" GridPane.rowIndex="2" GridPane.columnIndex="6" GridPane.columnSpan="2"/>
+
+                    <Label text="Cutoff Freq 1 (rad/s):" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="label"/>
+                    <TextField fx:id="cutoffFrequency1Field" prefWidth="80" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <Slider fx:id="cutoffFrequency1Slider" min="0.1" max="10" prefWidth="150" GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
+                    <Label fx:id="cutoff2Label" text="Cutoff Freq 2 (rad/s):" GridPane.rowIndex="3" GridPane.columnIndex="4" styleClass="label"/>
+                    <TextField fx:id="cutoffFrequency2Field" prefWidth="80" GridPane.rowIndex="3" GridPane.columnIndex="5"/>
+                    <Slider fx:id="cutoffFrequency2Slider" min="0.1" max="20" prefWidth="150" GridPane.rowIndex="3" GridPane.columnIndex="6" GridPane.columnSpan="2"/>
+
+                    <Label text="Passband Edge (rad/s):" GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="label"/>
+                    <TextField fx:id="passbandEdgeField" prefWidth="80" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    <Slider fx:id="passbandEdgeSlider" min="0.1" max="10" prefWidth="150" GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
+                    <Label text="Stopband Edge (rad/s):" GridPane.rowIndex="4" GridPane.columnIndex="4" styleClass="label"/>
+                    <TextField fx:id="stopbandEdgeField" prefWidth="80" GridPane.rowIndex="4" GridPane.columnIndex="5"/>
+                    <Slider fx:id="stopbandEdgeSlider" min="0.1" max="20" prefWidth="150" GridPane.rowIndex="4" GridPane.columnIndex="6" GridPane.columnSpan="2"/>
+
+                    <Label text="Stability:" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="label"/>
+                    <Label fx:id="stabilityLabel" text="Unknown" GridPane.rowIndex="5" GridPane.columnIndex="1" styleClass="label"/>
+                </GridPane>
+                <Separator/>
+                <GridPane hgap="5" vgap="5" alignment="CENTER">
+                    <Label text="Test Signal:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label"/>
+                    <ComboBox fx:id="testSignalType" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Frequency (Hz):" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="label"/>
+                    <TextField fx:id="testSignalFreqField" prefWidth="80" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                    <Slider fx:id="testSignalFreqSlider" min="0.1" max="10" prefWidth="150" GridPane.rowIndex="0" GridPane.columnIndex="4" GridPane.columnSpan="2"/>
+                    <Label text="Amplitude:" GridPane.rowIndex="0" GridPane.columnIndex="6" styleClass="label"/>
+                    <TextField fx:id="testSignalAmpField" prefWidth="80" GridPane.rowIndex="0" GridPane.columnIndex="7"/>
+                    <Slider fx:id="testSignalAmpSlider" min="0.1" max="5" prefWidth="150" GridPane.rowIndex="0" GridPane.columnIndex="8" GridPane.columnSpan="2"/>
+                </GridPane>
+                <HBox spacing="5" alignment="CENTER">
+                    <Button fx:id="saveButton" text="Save"/>
+                    <Button fx:id="startSimButton" text="Start Sweep"/>
+                    <Button fx:id="applySignalButton" text="Apply Signal"/>
+                    <Button fx:id="resetButton" text="Reset"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Magnitude (dB)" closable="false">
+            <VBox fx:id="magDbContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Magnitude (Linear)" closable="false">
+            <VBox fx:id="magLinearContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Phase" closable="false">
+            <VBox fx:id="phaseContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Group Delay" closable="false">
+            <VBox fx:id="groupDelayContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Pole-Zero" closable="false">
+            <VBox fx:id="poleZeroContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Impulse Response" closable="false">
+            <VBox fx:id="impulseContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Step Response" closable="false">
+            <VBox fx:id="stepContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Signal I/O" closable="false">
+            <VBox fx:id="signalContainer" styleClass="pane"/>
+        </Tab>
+        <Tab text="Design Output" closable="false">
+            <TextArea fx:id="designOutputArea" wrapText="true" editable="false" styleClass="text-area"/>
+        </Tab>
+    </TabPane>
+    <Label fx:id="statusLabel" text="Ready" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="5" styleClass="status-label"/>
+</AnchorPane>
